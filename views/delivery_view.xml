@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_delivery_carrier_form" model="ir.ui.view">
+        <field name="name">delivery.carrier.form.inherit</field>
+        <field name="model">delivery.carrier</field>
+        <field name="inherit_id" ref="delivery.view_delivery_carrier_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="NOW" name="now" attrs="{'invisible': [('delivery_type', '!=', 'noweu')]}">
+                    <group>
+                        <field name="shipping_property_key_id" />
+                    </group>
+                    <notebook>
+                        <page name="category_prices" string="Category prices">
+                            <field name="category_price_ids" widget="one2many">
+                                <tree string="Values" editable="bottom">
+                                    <field name="code" />
+                                    <field name="is_free" />
+                                    <field name="price" attrs="{'readonly':[('is_free','==',True)]}" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

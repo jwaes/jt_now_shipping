@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <record id="key_noweu" model="jt.property.key">
+            <field name="name">Delivery NOW EU</field>
+            <field name="code">internal.delivery.noweu</field>
+        </record>
+
+
+        <record id="value_noweu_free" model="jt.property.value">
+            <field name="name">Free</field>
+            <field name="code">free</field>
+            <field name="key_id" ref="jt_now_shipping.key_noweu"/>
+        </record>
+
+        <record id="value_noweu_bath" model="jt.property.value">
+            <field name="name">Bath</field>
+            <field name="code">bath</field>
+            <field name="key_id" ref="jt_now_shipping.key_noweu"/>
+        </record>
+
+    </data>
+
+</odoo>

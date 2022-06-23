@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_jt_now_shipping_jt_now_shipping,jt_now_shipping.jt_now_shipping,model_jt_now_shipping_jt_now_shipping,base.group_user,1,1,1,1
+jt_now_shipping.access_jt_deliveryprice_all,access_jt_deliveryprice,jt_now_shipping.model_category_price,stock.group_stock_user,1,0,0,0
+jt_now_shipping.access_jt_deliveryprice_admin,access_jt_deliveryprice,jt_now_shipping.model_category_price,stock.group_stock_manager,1,1,1,1
