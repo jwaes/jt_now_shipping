@@ -7,6 +7,9 @@ _logger = logging.getLogger(__name__)
 class ProviderNow(models.Model):
     _inherit = 'delivery.carrier'
 
+    website_extra_info = fields.Boolean('website_extra_info', default=False)
+    website_extra_info_html = fields.Html('website_extra_info_html')
+
     shipping_property_key_id = fields.Many2one('jt.property.key', string='Key')
     category_price_ids = fields.One2many('category.price', 'delivery_carrier_id', string='Category Price')
 

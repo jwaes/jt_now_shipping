@@ -4,7 +4,7 @@
     <record id="view_delivery_carrier_form" model="ir.ui.view">
         <field name="name">delivery.carrier.form.inherit</field>
         <field name="model">delivery.carrier</field>
-        <field name="inherit_id" ref="delivery.view_delivery_carrier_form" />
+        <field name="inherit_id" ref="website_sale_delivery.view_delivery_carrier_form_website_delivery" />
         <field name="arch" type="xml">
             <xpath expr="//notebook" position="inside">
                 <page string="NOW" name="now" attrs="{'invisible': [('delivery_type', '!=', 'noweu')]}">
@@ -23,6 +23,12 @@
                         </page>
                     </notebook>
                 </page>
+            </xpath>
+            <xpath expr="//page[@name='description']" position="inside">
+                    <hr/>
+                    <p>Extra information that shows up in the checkout flow</p>
+                    <field name="website_extra_info"/>
+                    <field name="website_extra_info_html" attrs="{'invisible':[('website_extra_info','=',False)]}"/>
             </xpath>
         </field>
     </record>
