@@ -72,6 +72,11 @@ class ProviderNow(models.Model):
                         'warning_message': "We could not calculate a shipping price"}
                 shipping_categ_code = kvs[0].value_id.code                
                 categ_price = self._get_price_for_category(shipping_categ_code)
+                if not categ_price:
+                    return {'success': False,
+                        'price': price,
+                        'error_message': "We could not calculate a shipping price, please contact us.",
+                        'warning_message': False}                    
                 price += line.product_qty * categ_price
                 _logger.info("+= %s * %s (%s) = %s", line.product_qty, categ_price, shipping_categ_code, price)
 
