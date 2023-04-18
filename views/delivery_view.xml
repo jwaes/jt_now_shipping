@@ -30,6 +30,9 @@
                     <field name="website_extra_info"/>
                     <field name="website_extra_info_html" attrs="{'invisible':[('website_extra_info','=',False)]}"/>
             </xpath>
+            <field name="amount" position="after">
+                <field name="not_free_price" attrs="{'required':[('free_over','!=', False)], 'invisible':[('free_over','=', False)]}"/>
+            </field>
         </field>
     </record>
 
