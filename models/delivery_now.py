@@ -83,7 +83,7 @@ class ProviderNow(models.Model):
                 _logger.info("+= %s * %s (%s) = %s", line.product_qty, categ_price, shipping_categ_code, price)
 
         total = order._compute_amount_total_without_delivery()
-        if self.free_over and total < self.amount:
+        if self.free_over and total < self.amount and price < self.not_free_price:
             price = self.not_free_price
 
         return {'success': True,
