@@ -13,6 +13,8 @@ class ProviderNow(models.Model):
     shipping_property_key_id = fields.Many2one('jt.property.key', string='Key')
     category_price_ids = fields.One2many('category.price', 'delivery_carrier_id', string='Category Price')
 
+    now_free_over = fields.Boolean('NOW Free over', default=False)
+    now_amount = fields.Float(string='NOW Amount', help="Minimum price for free shipping")
     not_free_price = fields.Float(string='Shipping cost', help="Price if we do not reach the minimum order price")
 
     delivery_type = fields.Selection(selection_add=[
@@ -83,13 +85,13 @@ class ProviderNow(models.Model):
                 _logger.info("+= %s * %s (%s) = %s", line.product_qty, categ_price, shipping_categ_code, price)
 
         total = order._compute_amount_total_without_delivery()
-        if self.free_over and total < self.amount and price < self.not_free_price:
+        if self.now_free_over and total < self.now_amount and price < self.not_free_price:
             price = self.not_free_price
 
         return {'success': True,
                 'price': price,
                 'error_message': False,
-                'warning_message': "Warning"} 
+                'warning_message': False} 
 
 class DeliveryCarrierCategoryPrice(models.Model):
     _name = 'category.price'

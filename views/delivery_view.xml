@@ -10,6 +10,9 @@
                 <page string="NOW" name="now" attrs="{'invisible': [('delivery_type', '!=', 'noweu')]}">
                     <group>
                         <field name="shipping_property_key_id" />
+                        <field name="now_free_over"/>
+                        <field name="now_amount" attrs="{'required':[('now_free_over','!=', False)], 'invisible':[('now_free_over','=', False)]}"/>
+                        <field name="not_free_price" attrs="{'required':[('now_free_over','!=', False)], 'invisible':[('now_free_over','=', False)]}"/>        
                     </group>
                     <notebook>
                         <page name="category_prices" string="Category prices">
@@ -30,9 +33,9 @@
                     <field name="website_extra_info"/>
                     <field name="website_extra_info_html" attrs="{'invisible':[('website_extra_info','=',False)]}"/>
             </xpath>
-            <field name="amount" position="after">
-                <field name="not_free_price" attrs="{'required':[('free_over','!=', False)], 'invisible':[('free_over','=', False)]}"/>
-            </field>
+            <!-- <field name="amount" position="after">
+                
+              </field> -->
         </field>
     </record>
 
