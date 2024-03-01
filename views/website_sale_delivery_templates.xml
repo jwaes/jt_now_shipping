@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <template id="payment_delivery_methods" inherit_id="website_sale_delivery.payment_delivery_methods">
+    <template id="payment_delivery_methods" inherit_id="website_sale.payment_delivery_methods">
         <xpath expr="//t[@t-if='delivery.website_description']" position="after">
             <t t-if="delivery.website_extra_info">
                 <div t-field="delivery.website_extra_info_html" class="text-muted mt8"/>
