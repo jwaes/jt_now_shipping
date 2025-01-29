@@ -18,11 +18,11 @@
           <notebook>
             <page name="category_prices" string="Category prices">
               <field name="category_price_ids" widget="one2many">
-                <tree editable="bottom" string="Values">
+                <list editable="bottom" string="Values">
                   <field name="code" />
                   <field name="is_free" />
                   <field name="price" readonly="is_free == True" />
-                </tree>
+                </list>
               </field>
             </page>
           </notebook>
